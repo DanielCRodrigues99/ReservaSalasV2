@@ -1,3 +1,5 @@
+import BotaoReservar from "./BotaoReservar";
+
 export default function ListaSalas({ salas }) {
   if (salas.length === 0) {
     return <p className="text-zinc-600 dark:text-zinc-400">Não há salas disponíveis.</p>;
@@ -16,12 +18,7 @@ export default function ListaSalas({ salas }) {
               Capacidade: {sala.capacidade} {sala.capacidade === 1 ? "pessoa" : "pessoas"}
             </p>
           </div>
-          <button
-            type="button"
-            className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
-          >
-            Reservar
-          </button>
+          <BotaoReservar sala={sala} />
         </li>
       ))}
     </ul>
