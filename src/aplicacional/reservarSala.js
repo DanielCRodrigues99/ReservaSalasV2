@@ -1,3 +1,4 @@
+import { garantirDuracaoMaxima } from "../dominio/duracao";
 import { ErroSobreposicao, ErroValidacao } from "../dominio/erros";
 import { criarReserva } from "../dominio/reserva";
 import { garantirSemSobreposicao } from "../dominio/sobreposicao";
@@ -18,6 +19,7 @@ export async function reservarSala(dados, { repositorio, gerarId = () => crypto.
 
     // As regras do domínio são verificadas antes de consultar o repositório.
     const reserva = criarReserva({ id: gerarId(), salaId, inicio, fim });
+    garantirDuracaoMaxima(reserva);
 
     const salas = await repositorio.listarSalas();
     if (!salas.some((sala) => sala.id === salaId)) {
