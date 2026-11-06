@@ -19,8 +19,11 @@ describe("BotaoReservar", () => {
     expect(html).toMatch(/Hora de fim<\/label><input[^>]*type="time"[^>]*required/);
   });
 
-  it("submeter só fecha o diálogo e existe um botão para cancelar", () => {
-    expect(html).toContain('method="dialog"');
+  // Antes submeter só fechava o diálogo (method="dialog"); agora envia para a Server Action.
+  it("submeter envia a sala escolhida para o servidor e existe um botão para cancelar", () => {
+    expect(html).not.toContain('method="dialog"');
+    expect(html).toContain('<input type="hidden" name="salaId" value="2"/>');
+    expect(html).toMatch(/<button type="submit"[^>]*>Confirmar<\/button>/);
     expect(html).toMatch(/<button type="button"[^>]*>Cancelar<\/button>/);
   });
 });

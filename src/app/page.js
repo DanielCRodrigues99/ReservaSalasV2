@@ -1,12 +1,5 @@
 import ListaSalas from "../components/ListaSalas";
-
-// Dados de exemplo: vão ser substituídos pelo caso de uso de listagem de salas.
-const SALAS_EXEMPLO = [
-  { id: 1, nome: "Sala Atlântico", capacidade: 12 },
-  { id: 2, nome: "Sala Douro", capacidade: 6 },
-  { id: 3, nome: "Sala Tejo", capacidade: 20 },
-  { id: 4, nome: "Sala Mondego", capacidade: 4 },
-];
+import { SALAS_EXEMPLO } from "./salasExemplo";
 
 export default function Home() {
   return (
